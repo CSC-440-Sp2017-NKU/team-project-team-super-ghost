@@ -1,29 +1,102 @@
-<p id="notice"><%= notice %></p>
+<!-- This JUMBOTRON will serve as the header of the page. -->
+<div class="jumbotron" style="margin: 0px;" id="header">
+	<div class="container">
+		<h1>NKU-Net</h1>
+		<p>This is NKU-Net. Navigate this site to ask NKU students and faculty members any question regarding the Norse Nation.</p>
+	</div>
+</div>
 
-<h1>Listing Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- The navigation/affix bar for the entire page. TODO: Add affix functionality. -->
+<nav class="navbar navbar-inverse" id="navbar">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
+			<a class="navbar-brand" href="#"><b>NKU-Net</b></a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Posts</a></li>
+				<li><a href="#">My Profile</a></li>
+				<li><%= link_to 'New Post', new_post_path %></li>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+			
+		</div>
+	</div>
+</nav>
+
+
+
+<h1 class="tab">Post Listing</h1>
+<p  class="tab" id="notice"><%= notice %></p>
+
+<!-- Beginning of the posts/questions from users. -->
+<div class="list-group">
+  
+  <% @posts.each do |post| %>
+      <%= link_to post, class: "list-group-item" do %>
+        <strong>Author:</strong> <%= post.title %> <span class="badge"><%= post.comments.count %></span>
+      <% end %>
+  <% end %>
+  
+</div>
+
+
+
+<!-- This page navigation will be used to navigate through pages with numbered buttons. -->
+<nav aria-label="Page navigation" id="page-flip">
+	<ul class="pagination">
+		<li>
+			<a href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li>
+			<a href="#" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+	</ul>
+</nav>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<!-- Add question/post button. -->
+<%= link_to image_tag("add-button.jpg", class: "img-circle", id: "add-button"), new_post_path %>
+
+<!-- Footer that will have contact information. -->
+<nav class="navbar navbar-default navbar-bottom" role="navigation" id="footer">
+	<div class="container">
+		<table class="table" style="margin: 0px; padding: 0px;">
+			<tr>
+				<td>
+					<img src="http://brand.nku.edu/images/logo3.jpg" style="width: 300px;"/>
+				</td>
+				<!--<td style="text-align: left; vertical-align: middle;">-->
+				<!--	Northern Kentucky University<br />-->
+				<!--	Nunn Drive | Highland Heights, Kentucky 41099<br />-->
+				<!--	<br />-->
+				<!--	Phone: (859) 572-5100-->
+				<!--	<br />-->
+				<!--	&copy; 2017 Northern Kentucky University. All rights reserved.-->
+				<!--</td>-->
+			</tr>
+		</table>
+	</div>
+</nav>
