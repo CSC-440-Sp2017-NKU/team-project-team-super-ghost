@@ -1,5 +1,36 @@
-<h1>New Post</h1>
+<!-- The navigation/affix bar for the entire page. TODO: Add affix functionality. -->
+<nav class="navbar navbar-inverse" id="navbar">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
+			<a class="navbar-brand" href="#"><b>NKU-Net</b></a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			
+			<ul class="nav navbar-nav">
+				<li><%= link_to 'Posts', posts_path %></li>       <!-- Link to main page. -->
+				<li><a href="#">My Profile</a></li>
+				<li class="active"><%= link_to 'New Post', new_post_path %></li> <!-- Link to new post page. -->
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+			
+		</div>
+	</div>
+</nav>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', posts_path %>
+<div class="container">
+ 	<div class="row">
+    	<div class="col-md-12">
+    		<h1>New Post</h1>
+    		<%= render 'form' %>
+		</div>
+  	</div>
+</div>

@@ -1,13 +1,3 @@
-<!-- This JUMBOTRON will serve as the header of the page. -->
-<div class="jumbotron" style="margin: 0px;" id="header">
-	<div class="container">
-		<h1>NKU-Net</h1>
-		<p>This is NKU-Net. Navigate this site to ask NKU students and faculty members any question regarding the Norse Nation.</p>
-	</div>
-</div>
-
-
-
 <!-- The navigation/affix bar for the entire page. TODO: Add affix functionality. -->
 <nav class="navbar navbar-inverse" id="navbar">
 	<div class="container-fluid">
@@ -22,7 +12,7 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Posts</a></li>
+				<li class="active"><%= link_to 'Posts', posts_path %></li>
 				<li><a href="#">My Profile</a></li>
 				<li><%= link_to 'New Post', new_post_path %></li>
 			</ul>
@@ -46,7 +36,7 @@
   
   <% @posts.each do |post| %>
       <%= link_to post, class: "list-group-item" do %>
-        <strong>Author:</strong> <%= post.title %> <span class="badge"><%= post.comments.count %></span>
+        <strong><%= post.author %>:</strong> <%= post.title %> <span class="badge"><%= post.comments.count %></span>
       <% end %>
   <% end %>
   
@@ -80,23 +70,3 @@
 <!-- Add question/post button. -->
 <%= link_to image_tag("add-button.jpg", class: "img-circle", id: "add-button"), new_post_path %>
 
-<!-- Footer that will have contact information. -->
-<nav class="navbar navbar-default navbar-bottom" role="navigation" id="footer">
-	<div class="container">
-		<table class="table" style="margin: 0px; padding: 0px;">
-			<tr>
-				<td>
-					<img src="http://brand.nku.edu/images/logo3.jpg" style="width: 300px;"/>
-				</td>
-				<!--<td style="text-align: left; vertical-align: middle;">-->
-				<!--	Northern Kentucky University<br />-->
-				<!--	Nunn Drive | Highland Heights, Kentucky 41099<br />-->
-				<!--	<br />-->
-				<!--	Phone: (859) 572-5100-->
-				<!--	<br />-->
-				<!--	&copy; 2017 Northern Kentucky University. All rights reserved.-->
-				<!--</td>-->
-			</tr>
-		</table>
-	</div>
-</nav>
