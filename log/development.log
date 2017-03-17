@@ -472,3 +472,18 @@ Completed 200 OK in 19ms (Views: 17.7ms | ActiveRecord: 0.4ms)
 
 Started GET "/assets/campus-bg.jpg" for 192.122.237.252 at 2017-03-16 19:57:42 +0000
 Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/" for 192.122.237.252 at 2017-03-16 20:38:18 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 2]]
+  Rendered posts/index.html.erb within layouts/application (459.4ms)
+Completed 200 OK in 751ms (Views: 650.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/campus-bg.jpg" for 192.122.237.252 at 2017-03-16 20:38:20 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
