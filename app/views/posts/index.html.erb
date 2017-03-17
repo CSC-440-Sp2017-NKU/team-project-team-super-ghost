@@ -1,33 +1,3 @@
-<!-- The navigation/affix bar for the entire page. TODO: Add affix functionality. -->
-<nav class="navbar navbar-inverse" id="navbar">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span> 
-			</button>
-			<a class="navbar-brand" href="#"><b>NKU-Net</b></a>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			
-			<ul class="nav navbar-nav">
-				<li class="active"><%= link_to 'Posts', posts_path %></li>
-				<li><a href="#">My Profile</a></li>
-				<li><%= link_to 'New Post', new_post_path %></li>
-			</ul>
-			
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			</ul>
-			
-		</div>
-	</div>
-</nav>
-
-
-
 <h1 class="tab">Post Listing</h1>
 <p  class="tab" id="notice"><%= notice %></p>
 
@@ -69,4 +39,3 @@
 
 <!-- Add question/post button. -->
 <%= link_to image_tag("add-button.jpg", class: "img-circle", id: "add-button"), new_post_path %>
-

@@ -1,5 +1,9 @@
 class Post < ActiveRecord::Base
-    validates :title,  :presence => true # Post MUST have a title to be valid.
-    # belongs_to   :author
-    has_many  :comments
+  # Validates what MUST be included to make a post.
+  validates :title,  :presence => true 
+  validates :body,   :presence => true
+  validates :author, :presence => true
+  
+  # Set up association to contain many Comment ActiveRecord instances.
+  has_many  :comments
 end

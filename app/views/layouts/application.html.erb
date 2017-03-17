@@ -16,19 +16,6 @@
   
 </head>
 <body>
-
-  <!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
-  <!--  <div class="container-fluid">-->
-  <!--    <div class="navbar-header">-->
-  <!--      <a class="navbar-brand" href="#">NKU-Net</a>-->
-  <!--    </div>-->
-  <!--    <ul class="nav navbar-nav">-->
-  <!--      <li class="active"><a href="#">Post Feed</a></li>-->
-  <!--      <li><a href="#">Profile</a></li>-->
-  <!--      <li><a href="#">Logout</a></li>-->
-  <!--    </ul>-->
-  <!--  </div>-->
-  <!--</nav>-->
   
   <!-- This JUMBOTRON will serve as the header of the page. -->
   <div class="jumbotron" style="margin: 0px;" id="header">
@@ -39,7 +26,46 @@
   </div>
 
 
-  <%= yield %>
+  <!-- The navigation/affix bar for the entire page. TODO: Add affix functionality. -->
+  <nav class="navbar navbar-inverse" id="navbar">
+  	<div class="container-fluid">
+  		<div class="navbar-header">
+  			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span> 
+  			</button>
+  			<%= link_to posts_path do %>
+  			  <%= image_tag "flame.png", class: "navbar-brand" %>
+  			<% end %>
+  			<!--<a class="navbar-brand" href="#"><b>NKU-Net</b></a>-->
+  		</div>
+  		
+  		<div class="collapse navbar-collapse" id="myNavbar">
+  			
+  			<ul class="nav navbar-nav">
+  				<li><%= link_to 'Posts', posts_path %></li>       <!-- Link to main page. -->
+  				<li><a href="#">My Profile</a></li>
+  				<li><%= link_to 'New Post', new_post_path %></li> <!-- Link to new post page. -->
+  			</ul>
+  			
+  			<ul class="nav navbar-nav navbar-right">
+  				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+  				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  			</ul>
+  			
+  		</div>
+  	</div>
+  </nav>
+
+  <!-- Rendering of the current page. -->
+  <div class="container">
+ 	  <div class="row">
+    	<div class="col-md-12">
+        <%= yield %>
+      </div>
+  	</div>
+  </div>
 
 
 
