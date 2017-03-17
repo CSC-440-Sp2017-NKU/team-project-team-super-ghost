@@ -18,7 +18,7 @@ The following repository will be used for a project implementing NKU-Net, an NKU
 
 ### Database Commands Used:
 
-`bin/rails g scaffold Post title:string body:text`
+`bin/rails g scaffold Post title:string body:text author:string`
 
 `bin/rails g model Comment author:string body:text post:references`
 
