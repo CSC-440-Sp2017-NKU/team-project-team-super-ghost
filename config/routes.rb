@@ -1,8 +1,21 @@
 Rails.application.routes.draw do
   resources :posts do
-    resources :comments, only: :create # Comments ONLY available inside posts.
+    resources :comments, :only => [:create, :destroy, :update] # Comments ONLY available inside posts.
   end
-  root 'posts#index'
+  
+  
+  
+  root   'posts#index'
+  
+  
+  # TEMP
+  # controller :comments do
+  #   get 'blog/show'     => :list
+  #   get 'blog/delete'   => :delete
+  #   get 'blog/edit/:id' => :edit
+  
+  patch  'comments#update'  => 'comments#edit'
+  delete 'comments#destroy' => 'comments#delete'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
