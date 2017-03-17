@@ -5785,3 +5785,358 @@ Completed 200 OK in 127ms (Views: 46.0ms | ActiveRecord: 0.2ms)
             FROM sqlite_temp_master
             WHERE name='index_comments_on_post_id' AND type='index'
 [0m
+
+
+Started GET "/posts" for 192.122.237.11 at 2017-03-17 18:56:09 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 2]]
+  Rendered posts/index.html.erb within layouts/application (364.2ms)
+Completed 200 OK in 464ms (Views: 442.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/posts" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered posts/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 56ms (Views: 54.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/posts.self-0bf15b470cd1f1aeb34fb80a61a3bb62effcf1d1956a84ee882d2e58a15efcaf.css?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-548055c2c169674822f2d0a57baa337b0fb8b18c852fae9fcbd2790f5757ef95.css?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/scaffolds.self-d2e5ccad1506299feea3a35bfb7c525e101bb3b214303715deb675fdc539948b.css?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/add-button-9ef9fac48813e8ab25705dc2204aaed3cd0e1f629b4a4f0f968197357476e76c.jpg" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/flame-1e11fb089c85848bf0140fcef6d8ba8c82638e1a55073961a5838955eecc0c92.png" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/campus-bg.jpg" for 192.122.237.11 at 2017-03-17 18:56:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/posts/new" for 192.122.237.11 at 2017-03-17 18:56:17 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (35.1ms)
+  Rendered posts/new.html.erb within layouts/application (41.1ms)
+Completed 200 OK in 61ms (Views: 59.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 192.122.237.11 at 2017-03-17 18:57:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bdyq8CESYlg6a1FnphUCvnlF0TbbF+sCencFeADxOerBRFX931upEpwVd4XWjIbOzuaaQSk84pKKeAn72udxUQ==", "post"=>{"author"=>"Nathaniel", "title"=>"Is McCord a tough grader?", "body"=>"I'm currently taking his CSC 440—001 (Software Engineering) section this semester, and I'm worried about my grade. Has anyone had him before? Is he a tough grader?"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("title", "body", "author", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Is McCord a tough grader?"], ["body", "I'm currently taking his CSC 440—001 (Software Engineering) section this semester, and I'm worried about my grade. Has anyone had him before? Is he a tough grader?"], ["author", "Nathaniel"], ["created_at", "2017-03-17 18:57:10.055657"], ["updated_at", "2017-03-17 18:57:10.055657"]]
+  [1m[35m (12.9ms)[0m  commit transaction
+Redirected to https://csc440-project-nchudson95.c9users.io/posts/3
+Completed 302 Found in 19ms (ActiveRecord: 13.5ms)
+
+
+Started GET "/posts/3" for 192.122.237.11 at 2017-03-17 18:57:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", "3"]]
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered posts/show.html.erb within layouts/application (28.9ms)
+Completed 200 OK in 71ms (Views: 52.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/campus-bg.jpg" for 192.122.237.11 at 2017-03-17 18:57:10 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/posts" for 192.122.237.11 at 2017-03-17 18:57:20 +0000
+Cannot render console from 192.122.237.11! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered posts/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 28ms (Views: 26.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 192.34.91.243 at 2017-03-17 19:51:03 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered posts/index.html.erb within layouts/application (361.0ms)
+Completed 200 OK in 447ms (Views: 428.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 192.34.91.243 at 2017-03-17 19:51:04 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.34.91.243 at 2017-03-17 19:51:04 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/scaffolds.self-d2e5ccad1506299feea3a35bfb7c525e101bb3b214303715deb675fdc539948b.css?body=1" for 192.34.91.243 at 2017-03-17 19:51:04 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/posts.self-0bf15b470cd1f1aeb34fb80a61a3bb62effcf1d1956a84ee882d2e58a15efcaf.css?body=1" for 192.34.91.243 at 2017-03-17 19:51:04 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 192.34.91.243 at 2017-03-17 19:51:04 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-548055c2c169674822f2d0a57baa337b0fb8b18c852fae9fcbd2790f5757ef95.css?body=1" for 192.34.91.243 at 2017-03-17 19:51:04 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 192.34.91.243 at 2017-03-17 19:51:04 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.34.91.243 at 2017-03-17 19:51:04 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 192.34.91.243 at 2017-03-17 19:51:04 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/flame-1e11fb089c85848bf0140fcef6d8ba8c82638e1a55073961a5838955eecc0c92.png" for 192.34.91.243 at 2017-03-17 19:51:05 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/add-button-9ef9fac48813e8ab25705dc2204aaed3cd0e1f629b4a4f0f968197357476e76c.jpg" for 192.34.91.243 at 2017-03-17 19:51:05 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/campus-bg.jpg" for 192.34.91.243 at 2017-03-17 19:51:05 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/posts/1" for 192.34.91.243 at 2017-03-17 19:51:07 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (60.3ms)
+Completed 200 OK in 103ms (Views: 81.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/helmet-1e80310d7a36a60caac593fecf042487cdefcbf30636c6274d5fee8375e31a6b.png" for 192.34.91.243 at 2017-03-17 19:51:07 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/posts/1" for 192.34.91.243 at 2017-03-17 19:55:52 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered posts/show.html.erb within layouts/application (2.1ms)
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 1.1ms)
+
+SyntaxError (/home/ubuntu/workspace/app/views/posts/show.html.erb:22: syntax error, unexpected '='
+...o edit_post_path(@post), class="glyph-link" do @output_buffe...
+...                               ^
+/home/ubuntu/workspace/app/views/posts/show.html.erb:22: syntax error, unexpected keyword_do_block, expecting keyword_end
+...h(@post), class="glyph-link" do @output_buffer.safe_append='
+...                               ^
+/home/ubuntu/workspace/app/views/posts/show.html.erb:27: syntax error, unexpected '='
+...firm: 'Are you sure?' }, class="glyph-link" do @output_buffe...
+...                               ^
+/home/ubuntu/workspace/app/views/posts/show.html.erb:27: syntax error, unexpected keyword_do_block, expecting end-of-input
+...sure?' }, class="glyph-link" do @output_buffer.safe_append='
+...                               ^):
+  app/views/posts/show.html.erb:22: syntax error, unexpected '='
+  app/views/posts/show.html.erb:22: syntax error, unexpected keyword_do_block, expecting keyword_end
+  app/views/posts/show.html.erb:27: syntax error, unexpected '='
+  app/views/posts/show.html.erb:27: syntax error, unexpected keyword_do_block, expecting end-of-input
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.4ms)
+
+
+Started GET "/posts/1" for 192.34.91.243 at 2017-03-17 19:57:01 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (430.1ms)
+Completed 200 OK in 568ms (Views: 497.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/posts.self-1dec09b7e6311d4b9062a0661945f44b9755774083c1df3f2d08092ba334d269.css?body=1" for 192.34.91.243 at 2017-03-17 19:57:01 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/scaffolds.self-d2e5ccad1506299feea3a35bfb7c525e101bb3b214303715deb675fdc539948b.css?body=1" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-548055c2c169674822f2d0a57baa337b0fb8b18c852fae9fcbd2790f5757ef95.css?body=1" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/flame-1e11fb089c85848bf0140fcef6d8ba8c82638e1a55073961a5838955eecc0c92.png" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/helmet-1e80310d7a36a60caac593fecf042487cdefcbf30636c6274d5fee8375e31a6b.png" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/campus-bg.jpg" for 192.34.91.243 at 2017-03-17 19:57:02 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/posts/1" for 192.34.91.243 at 2017-03-17 19:58:59 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 1]]
+  Rendered posts/show.html.erb within layouts/application (378.6ms)
+Completed 200 OK in 502ms (Views: 445.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/posts.self-1dec09b7e6311d4b9062a0661945f44b9755774083c1df3f2d08092ba334d269.css?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/scaffolds.self-d2e5ccad1506299feea3a35bfb7c525e101bb3b214303715deb675fdc539948b.css?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-548055c2c169674822f2d0a57baa337b0fb8b18c852fae9fcbd2790f5757ef95.css?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/flame-1e11fb089c85848bf0140fcef6d8ba8c82638e1a55073961a5838955eecc0c92.png" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/helmet-1e80310d7a36a60caac593fecf042487cdefcbf30636c6274d5fee8375e31a6b.png" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+
+
+Started GET "/assets/campus-bg.jpg" for 192.34.91.243 at 2017-03-17 19:59:00 +0000
+Cannot render console from 192.34.91.243! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
