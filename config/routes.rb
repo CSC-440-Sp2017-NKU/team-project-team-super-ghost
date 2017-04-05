@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :courses
   resources :posts do
     resources :comments, :only
   end

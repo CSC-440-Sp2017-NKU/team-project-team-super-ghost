@@ -1,0 +1,38 @@
+<h1 class="tab">Courses Listing</h1>
+
+<p class="tab" id="notice"><%= notice %></p>
+
+<div class="list-group">
+  
+  <% @courses.each do |course| %>
+      <%= link_to course, class: "list-group-item" do %>
+         <%= course.title %> <span class="badge"><%= course.posts.count %></span>
+      <% end %>
+  <% end %>
+</div>
+
+<!-- This page navigation will be used to navigate through pages with numbered buttons. -->
+<nav aria-label="Page navigation" id="page-flip">
+	<ul class="pagination">
+		<li>
+			<a href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			</a>
+		</li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li>
+			<a href="#" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+	</ul>
+</nav>
+
+
+<br>
+
+<%= link_to image_tag("add-button.jpg", class: "img-circle", id: "add-button"), new_course_path %>
