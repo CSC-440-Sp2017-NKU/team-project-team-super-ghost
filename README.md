@@ -15,11 +15,18 @@
   
 The following repository will be used for a project implementing NKU-Net, an NKU social platform for NKU students and faculty members to communicate.
 
+## Setup
+`bin/bundle install`
 
-### Database Commands Used:
+`bin/rake db:migrate`
 
+### Only use for initial DB setup.  Will clear DB!
+`bin/rake db:schema:load`
+
+
+## Database Commands Used:
 `bin/rails g scaffold Post title:string body:text author:string`
 
 `bin/rails g model Comment author:string body:text post:references`
 
-`bin/rake db:migrate`
+`bin/rails g model User name:string email:string password_digest:string`
