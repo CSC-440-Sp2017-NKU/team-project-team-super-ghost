@@ -4,19 +4,19 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Course.all
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
+    @post = Course.find(params[:id])
     @comments = @post.comments
   end
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Course.new
   end
 
   # GET /posts/1/edit
@@ -26,7 +26,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @course = Course.find(params[:course_id])
+    @post = @course.posts.build(post_params)
 
     respond_to do |format|
       if @post.save
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @course, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }

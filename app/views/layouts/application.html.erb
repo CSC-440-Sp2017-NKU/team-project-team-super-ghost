@@ -35,7 +35,7 @@
   				<span class="icon-bar"></span>
   				<span class="icon-bar"></span> 
   			</button>
-  			<%= link_to posts_path do %>
+  			<%= link_to courses_path do %>
   			  <%= image_tag "flame.png", class: "navbar-brand" %>
   			<% end %>
   			<!--<a class="navbar-brand" href="#"><b>NKU-Net</b></a>-->
@@ -44,10 +44,8 @@
   		<div class="collapse navbar-collapse" id="myNavbar">
   			
   			<ul class="nav navbar-nav">
-  			  <li><%= link_to 'Courses', courses_path %></li>
-  				<li><%= link_to 'Posts', posts_path %></li>       <!-- Link to main page. -->
+  			  <li><%= link_to 'Courses', courses_path %></li>     <!-- Link to main page. -->
   				<li><a href="#">My Profile</a></li>
-  				<li><%= link_to 'New Post', new_post_path %></li> <!-- Link to new post page. -->
   			</ul>
   			
   			<ul class="nav navbar-nav navbar-right">

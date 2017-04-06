@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :courses
-  resources :posts do
-    resources :comments, :only
+  resources :courses do
+    resources :posts do
+      resources :comments, :only
+    end
   end
-  root   'posts#index'
+  root   'courses#index'
   # TEMP
   # controller :comments do
   #   get 'blog/show'     => :list
