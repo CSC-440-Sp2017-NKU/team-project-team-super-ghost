@@ -1,4 +1,4 @@
-<%= form_for([@course, @post], url: {action: "update"}) do |f| %>
+<%= form_for([@course, @post], url: {action: "update"}, url: {action: "create"}) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -27,7 +27,7 @@
   </div>
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %> 
-    <%= link_to @post do %>
+    <%= link_to @course do %>
 				<button type="button" class="btn btn-danger">Cancel</button>
 		<% end %>
   </div>

@@ -5,7 +5,7 @@
 <div class="list-group">
   
   <% @posts.each do |post| %>
-      <%= link_to post, class: "list-group-item" do %>
+      <%= link_to course_post_path(@course, @post), class: "list-group-item" do %>
         <strong><%= post.author %>:</strong> <%= post.title %> <span class="badge"><%= post.comments.count %></span>
       <% end %>
   <% end %>

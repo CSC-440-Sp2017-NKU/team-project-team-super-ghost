@@ -1,54 +1,13 @@
+<h1 class="tab"><%= @course.title %></h1>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-  <div class="list-group">
-  
+<div>  
   <% @course.posts.each do |post| %>
-      <%= link_to post, class: "list-group-item" do %>
+      <%= link_to course_post_path(@course, post), class: "list-group-item" do %>
         <strong><%= post.author %>:</strong> <%= post.title %> <span class="badge"><%= post.comments.count %></span>
       <% end %>
   <% end %>
   
 </div>
-</p>
 
-<a href="#" data-toggle="modal" data-target="#myModal" class="glyph-link">
-          <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-          Create Post
-        </a>
-
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">New Post</h4>
-      </div>
-      
-      <!-- New Post Form -->
-      <div class="modal-body">
-        <%= form_for [@course, @course.posts.build] do |f| %>
-          <div class="form-group">
-            <%= f.label :title %><br />
-            <%= f.text_field :title, placeholder: "Enter title", class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :author %><br />
-            <%= f.text_field :author, placeholder: "Enter username", class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= f.label :body %><br />
-            <%= f.text_field :body, placeholder: "Enter comment", class: "form-control" %>
-          </div>
-          <%= f.submit class: "btn btn-primary" %>
-        <% end %>
-      </div>
-      
-    </div>
-
-  </div>
-
+<%= link_to image_tag("add-button.jpg", class: "img-circle", id: "add-button"), new_course_post_path(@course) %>
