@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # Sessions
   get '/login' => 'sessions#new', as: 'new_sessions'
-  post '/login' => 'sessions#create', as: 'post_sessions'
+  post '/login' => 'sessions#create', as: 'sessions'
   get '/logout' => 'sessions#destroy', as: 'destroy_sessions'
 
   # Posts and Comments
@@ -18,8 +18,6 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
-
-  get '/create-post' => 'posts#new', as: 'new_posts'
 end
 
 # EXAMPLES

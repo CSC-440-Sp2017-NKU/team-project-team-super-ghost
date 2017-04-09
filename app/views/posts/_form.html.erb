@@ -1,35 +1,29 @@
-<%= form_for([@course, @post], url: {action: "update"}, url: {action: "create"}) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_for([@course, @post]) do |f| %>
+    <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, placeholder: "Enter title", class: "form-control" %>
     </div>
-  <% end %>
+    <div class="field">
+      <%= f.label :body %><br>
+      <%= f.text_area :body, placeholder: "Enter question", class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to @course do %>
+          <button type="button" class="btn btn-danger">Cancel</button>
+      <% end %>
+    </div>
 
-  
-  
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author, placeholder: "Enter username", class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, placeholder: "Enter title", class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body, placeholder: "Enter question", class: "form-control" %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %> 
-    <%= link_to @course do %>
-				<button type="button" class="btn btn-danger">Cancel</button>
-		<% end %>
-  </div>
-  
 <% end %>

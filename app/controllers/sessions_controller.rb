@@ -13,8 +13,6 @@ class SessionsController < ApplicationController
       # Save the user id in a browser cookie.  This will persist while the user is logged in
       session[:user_id] = user.id
       redirect_to root_path
-    #else
-      #redirect_to new_sessions_path
     end
     @errors = ['Invalid username or password.']
     # Email/password incorrect
