@@ -1,18 +1,15 @@
-<h1 class="tab">Post Listing</h1>
-<p  class="tab" id="notice"><%= notice %></p>
+<h1 class="tab">Courses Listing</h1>
 
-<!-- Beginning of the posts/questions from users. -->
+<p class="tab" id="notice"><%= notice %></p>
+
 <div class="list-group">
   
-  <% @posts.each do |post| %>
-      <%= link_to course_post_path(@course, @post), class: "list-group-item" do %>
-        <strong><%= post.author %>:</strong> <%= post.title %> <span class="badge"><%= post.comments.count %></span>
+  <% @courses.each do |course| %>
+      <%= link_to course, class: "list-group-item" do %>
+         <%= course.title %> <span class="badge"><%= course.posts.count %></span>
       <% end %>
   <% end %>
-  
 </div>
-
-
 
 <!-- This page navigation will be used to navigate through pages with numbered buttons. -->
 <nav aria-label="Page navigation" id="page-flip">
@@ -35,7 +32,7 @@
 	</ul>
 </nav>
 
+
 <br>
 
-<!-- Add question/post button. -->
-<%= link_to image_tag("add-button.jpg", class: "img-circle", id: "add-button"), new_post_path %>
+<%= link_to image_tag("add-button.jpg", class: "img-circle", id: "add-button"), new_course_path %>

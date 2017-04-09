@@ -5,5 +5,6 @@ class Post < ActiveRecord::Base
   validates :author, :presence => true
   
   # Set up association to contain many Comment ActiveRecord instances.
+  belongs_to :course
   has_many  :comments
 end

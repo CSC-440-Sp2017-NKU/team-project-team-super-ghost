@@ -24,10 +24,11 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @post = Post.find(params[:post_id])
+    @course = Course.find(params[:course_id])
     @comment = @post.comments.build(comment_params)
     
     if @comment.save
-      redirect_to @post, notice: "Comment was successfully posted."
+      redirect_to course_post_path(@course, @post), notice: "Comment was successfully posted."
     else
       redirect_to @post, alert: "Error creating comment. " + @comment.errors.full_messages.to_sentence
     end
@@ -37,11 +38,12 @@ class CommentsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     @post = Post.find(params[:post_id])
+    @course = Course.find(params[:course_id])
     @comment = @post.comments.find(params[:id])
     
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @post, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to course_post_path(@course, @post), notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -54,11 +56,12 @@ class CommentsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:post_id])
+    @course = Course.find(params[:course_id])
     @comment = @post.comments.find(params[:id])
     
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @post, notice: 'Comment was successfully deleted.' }
+      format.html { redirect_to course_post_path(@course, @post), notice: 'Comment was successfully deleted.' }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Base url
-  root 'posts#index'
+  root 'courses#index'
 
   # Users
   resources :users
@@ -13,9 +13,13 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy', as: 'destroy_sessions'
 
   # Posts and Comments
-  resources :posts do
-    resources :comments
+  resources :courses do
+    resources :posts do
+      resources :comments
+    end
   end
+
+  get '/create-post' => 'posts#new', as: 'new_posts'
 end
 
 # EXAMPLES
