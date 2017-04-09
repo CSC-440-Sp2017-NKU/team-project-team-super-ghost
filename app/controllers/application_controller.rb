@@ -5,10 +5,13 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  rescue ActiveRecord::RecordNotFound
+    redirect_to destroy_sessions_path
   end
+
   helper_method :current_user
 
   def authorize
-    redirect_to '/login' unless current_user
+    redirect_to new_sessions_path unless current_user
   end
 end

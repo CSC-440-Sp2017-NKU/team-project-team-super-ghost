@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
   def new
     if current_user
-      redirect_to '/'
+      redirect_to root_path
     end
+    @errors = []
   end
 
   def create
@@ -11,15 +12,16 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       # Save the user id in a browser cookie.  This will persist while the user is logged in
       session[:user_id] = user.id
-      redirect_to '/'
-    else
-      # Email/password incorrect
-      redirect_to '/login'
+      redirect_to root_path
+    #else
+      #redirect_to new_sessions_path
     end
+    @errors = ['Invalid username or password.']
+    # Email/password incorrect
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to '/login'
+    reset_session
+    redirect_to new_sessions_path
   end
 end

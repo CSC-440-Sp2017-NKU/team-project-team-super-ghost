@@ -3,13 +3,14 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   # Users
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
+  resources :users
+  get '/signup' => 'users#new', as: 'new_users'
+  post '/signup' => 'users#create', as: 'post_users'
 
   # Sessions
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get '/login' => 'sessions#new', as: 'new_sessions'
+  post '/login' => 'sessions#create', as: 'post_sessions'
+  get '/logout' => 'sessions#destroy', as: 'destroy_sessions'
 
   # Posts and Comments
   resources :posts do
