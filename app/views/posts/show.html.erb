@@ -16,10 +16,12 @@
     <p><%= @post.body %></p>
 
     <p> <!-- Reply | Edit | Delete Buttons. -->
-      <a href="#" data-toggle="modal" data-target="#myModal" class="glyph-link">
-        <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-        Reply
-      </a>
+      <% if current_user.courses.exists?(@post.course) %>
+          <a href="#" data-toggle="modal" data-target="#myModal" class="glyph-link">
+            <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+            Reply
+          </a>
+      <% end %>
 
       <% if current_user.id == @post.user_id %>
           <%= link_to edit_course_post_path(@post.course, @post), class: "glyph-link" do %>

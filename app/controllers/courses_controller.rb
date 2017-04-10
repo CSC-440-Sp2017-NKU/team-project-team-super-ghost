@@ -16,8 +16,8 @@ class CoursesController < ApplicationController
   private
   def set_course
     @course = Course.find(params[:id])
-  end
-
-  def course_params
+    @breadcrumbs = [
+        Breadcrumb.new(@course.title, course_path(@course))
+    ]
   end
 end

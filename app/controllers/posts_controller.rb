@@ -22,13 +22,17 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     course = Course.find(params[:course_id])
-    @post = course.posts.new(post_params)
-    @post.user_id = current_user.id
+    if current_user.courses.exists?(course)
+      @post = course.posts.new(post_params)
+      @post.user_id = current_user.id
 
-    if @post.save
-      redirect_to course_post_path(@post.course, @post), notice: 'Post was successfully created.'
+      if @post.save
+        redirect_to course_post_path(@post.course, @post), notice: 'Post was successfully created.'
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to course_path(course)
     end
   end
 
@@ -59,7 +63,10 @@ class PostsController < ApplicationController
   private
   def set_post
     @post = Post.find(params[:id])
-    @breadcrumbs = [Breadcrumb.new(@post.course.title, course_path(@post.course))]
+    @breadcrumbs = [
+        Breadcrumb.new(@post.course.title, course_path(@post.course)),
+        Breadcrumb.new(@post.title, course_post_path(@post.course, @post))
+    ]
   end
 
   def post_params

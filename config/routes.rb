@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Base url
-  root 'courses#index'
+  root 'user_courses#index'
 
   # Users
   resources :users
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
+
+  resources :user_courses
 end
 
 # EXAMPLES

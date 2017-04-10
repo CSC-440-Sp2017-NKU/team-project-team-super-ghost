@@ -16,13 +16,17 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     post = Post.find(params[:post_id])
-    comment = post.comments.new(comment_params)
-    comment.user_id = current_user.id
+    if current_user.courses.exists?(post.course)
+      comment = post.comments.new(comment_params)
+      comment.user_id = current_user.id
 
-    if comment.save
-      redirect_to course_post_path(post.course, post), notice: "Comment was successfully posted."
+      if comment.save
+        redirect_to course_post_path(post.course, post), notice: "Comment was successfully posted."
+      else
+        redirect_to post, alert: "Error creating comment. " + comment.errors.full_messages.to_sentence
+      end
     else
-      redirect_to post, alert: "Error creating comment. " + comment.errors.full_messages.to_sentence
+      redirect_to redirect_to course_post_path(post.course, post)
     end
   end
 

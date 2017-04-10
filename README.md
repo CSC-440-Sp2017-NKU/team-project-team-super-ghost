@@ -30,3 +30,5 @@ The following repository will be used for a project implementing NKU-Net, an NKU
 `bin/rails g model Comment author:string body:text post:references`
 
 `bin/rails g model User name:string email:string password_digest:string`
+
+`bin/rails g migration CreateJoinTableUserCourses user course`

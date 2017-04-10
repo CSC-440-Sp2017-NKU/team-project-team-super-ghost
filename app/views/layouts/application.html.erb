@@ -45,7 +45,8 @@
         <% if current_user %>
             <ul class="nav navbar-nav">
               <li><p class="navbar-text">Hello, <%= current_user.name %></p></li>
-              <li><%= link_to 'Courses', courses_path %></li>
+              <li><%= link_to 'My Courses', user_courses_path %></li>
+              <li><%= link_to 'Preview Courses', courses_path %></li>
               <% if defined? @breadcrumbs %>
                   <% @breadcrumbs.each do |breadcrumb| %>
                       <li><%= link_to breadcrumb.name, breadcrumb.path %></li>
