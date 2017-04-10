@@ -46,6 +46,11 @@
             <ul class="nav navbar-nav">
               <li><p class="navbar-text">Hello, <%= current_user.name %></p></li>
               <li><%= link_to 'Courses', courses_path %></li>
+              <% if defined? @breadcrumbs %>
+                  <% @breadcrumbs.each do |breadcrumb| %>
+                      <li><%= link_to breadcrumb.name, breadcrumb.path %></li>
+                  <% end %>
+              <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "Logout", '/logout' %></li>

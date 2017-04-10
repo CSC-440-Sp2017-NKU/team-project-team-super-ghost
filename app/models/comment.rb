@@ -1,8 +1,8 @@
 class Comment < ActiveRecord::Base
-  # Validates what MUST be included to make a comment.
-  validates :body,   :presence => true
-  validates :author, :presence => true
-  
-  # Set up association to belong to Post ActiveRecord.
+  validates :body, :presence => true
+  validates :post_id, :presence => true
+  validates :user_id, :presence => true
+
+  belongs_to :user
   belongs_to :post
 end

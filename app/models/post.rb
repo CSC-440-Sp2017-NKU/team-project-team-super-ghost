@@ -1,10 +1,10 @@
 class Post < ActiveRecord::Base
-  # Validates what MUST be included to make a post.
   validates :title, :presence => true
   validates :body, :presence => true
+  validates :user_id, :presence => true
+  validates :course_id, :presence => true
 
-  # Set up association to contain many Comment ActiveRecord instances.
   belongs_to :course
   belongs_to :user
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 end

@@ -3,75 +3,65 @@ class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  # GET /posts
-  def index
-    @posts = Post.all
-  end
-
   # GET /posts/1
   def show
-    @course = Course.find(params[:course_id])
-    @post = @course.posts.find(params[:id])
-    @comments = @post.comments
+    # Handled by before_action
   end
 
   # GET /posts/new
   def new
-    @course = Course.find params[:course_id]
-    @post = Post.new(:course => @course)
+    course = Course.find params[:course_id]
+    @post = Post.new(:course => course)
   end
 
   # GET /posts/1/edit
   def edit
+    # Handled by before_action
   end
 
   # POST /posts
   def create
-    @course = Course.find(params[:course_id])
-    @post = @course.posts.build(post_params)
+    course = Course.find(params[:course_id])
+    @post = course.posts.new(post_params)
+    @post.user_id = current_user.id
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to [@course, @post], notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to course_post_path(@post.course, @post), notice: 'Post was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /posts/1
   def update
-    @course = Course.find(params[:course_id])
-    respond_to do |format|
+    if current_user.id == @post.user_id
       if @post.update(post_params)
-        format.html { redirect_to course_post_path(@course, @post), notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
+        redirect_to course_post_path(@post.course, @post), notice: 'Post was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        render :new
       end
+    else
+      redirect_to course_post_path(@post.course, @post)
     end
   end
 
   # DELETE /posts/1
   def destroy
-    @course = Course.find(params[:course_id])
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to @course, notice: 'Post was successfully deleted.' }
-      format.json { head :no_content }
+    course = @post.course
+    if current_user.id == @post.user_id
+      @post.destroy
+      redirect_to course, notice: 'Post was successfully deleted.'
+    else
+      redirect_to course_post_path(course, @post)
     end
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+    @breadcrumbs = [Breadcrumb.new(@post.course.title, course_path(@post.course))]
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     params.require(:post).permit(:title, :body)
   end

@@ -1,12 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :authorize
 
-  # before_action :set_comment, only: [:edit, :update, :destroy]
-
-  # GET /comments
-  def index
-    @comments = Post.all
-  end
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   # GET /comments/new
   def new
@@ -15,62 +10,57 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
+    # Handled by before_action
   end
 
   # POST /comments
   def create
-    @post = Post.find(params[:post_id])
-    @course = Course.find(params[:course_id])
-    @comment = @post.comments.build(comment_params)
+    post = Post.find(params[:post_id])
+    comment = post.comments.new(comment_params)
+    comment.user_id = current_user.id
 
-    if @comment.save
-      redirect_to course_post_path(@course, @post), notice: "Comment was successfully posted."
+    if comment.save
+      redirect_to course_post_path(post.course, post), notice: "Comment was successfully posted."
     else
-      redirect_to @post, alert: "Error creating comment. " + @comment.errors.full_messages.to_sentence
+      redirect_to post, alert: "Error creating comment. " + comment.errors.full_messages.to_sentence
     end
   end
 
   # PATCH/PUT /posts/1
   def update
-    @post = Post.find(params[:post_id])
-    @course = Course.find(params[:course_id])
-    @comment = @post.comments.find(params[:id])
-
-    respond_to do |format|
+    if current_user.id == @comment.user_id
       if @comment.update(comment_params)
-        format.html { redirect_to course_post_path(@course, @post), notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+        redirect_to course_post_path(@comment.post.course, @comment.post), notice: 'Comment was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        render :edit
       end
+    else
+      redirect_to course_post_path(@comment.post.course, @comment.post)
     end
   end
 
   # DELETE /posts/1
   def destroy
-    @post = Post.find(params[:post_id])
-    @course = Course.find(params[:course_id])
-    @comment = @post.comments.find(params[:id])
-
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to course_post_path(@course, @post), notice: 'Comment was successfully deleted.' }
-      format.json { head :no_content }
+    post = @comment.post
+    if current_user.id == @comment.user_id
+      @comment.destroy
+      redirect_to course_post_path(post.course, post), notice: 'Comment was successfully deleted.'
+    else
+      redirect_to course_post_path(post.course, post)
     end
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_comment
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
+    @comment = Comment.find(params[:id])
+    @breadcrumbs = [
+        Breadcrumb.new(@comment.post.course.title, course_path(@comment.post.course)),
+        Breadcrumb.new(@comment.post.title, course_post_path(@comment.post.course, @comment.post))
+    ]
   end
 
   def comment_params
-    params.require(:comment).permit(:author, :body)
+    params.require(:comment).permit(:body)
   end
 
 end
