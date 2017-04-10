@@ -6,7 +6,8 @@ class CoursesController < ApplicationController
   # GET /courses
   def index
     #@courses = Course.all
-    @courses = Course.includes(:users).where('users.id IS NULL').references(:users)
+    user_course_ids = current_user.courses.pluck(:id)
+    @courses = Course.all.where('id NOT IN(?)', user_course_ids)
   end
 
   # GET /courses/1
