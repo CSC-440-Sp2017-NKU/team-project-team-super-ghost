@@ -5,7 +5,8 @@ class CoursesController < ApplicationController
 
   # GET /courses
   def index
-    @courses = Course.all
+    #@courses = Course.all
+    @courses = Course.includes(:users).where('users.id IS NULL').references(:users)
   end
 
   # GET /courses/1
