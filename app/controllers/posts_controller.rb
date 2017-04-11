@@ -60,6 +60,16 @@ class PostsController < ApplicationController
     end
   end
 
+  # UPVOTE /posts/1/upvote
+  def upvote
+    # TODO
+  end
+
+  # DOWNVOTE /posts/1/downvote
+  def downvote
+    # TODO
+  end
+
   private
   def set_post
     @post = Post.find(params[:id])

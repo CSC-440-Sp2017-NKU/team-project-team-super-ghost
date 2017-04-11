@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
+  # PATCH/PUT /comments/1
   def update
     if current_user.id == @comment.user_id
       if @comment.update(comment_params)
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
+  # DELETE /comments/1
   def destroy
     post = @comment.post
     if current_user.id == @comment.user_id
@@ -52,6 +52,16 @@ class CommentsController < ApplicationController
     else
       redirect_to course_post_path(post.course, post)
     end
+  end
+
+  # UPVOTE /comments/1/upvote
+  def upvote
+    # TODO
+  end
+
+  # DOWNVOTE /comments/1/downvote
+  def downvote
+    # TODO
   end
 
   private

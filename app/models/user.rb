@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  has_many :posts
-  has_many :comments
+  has_many :posts, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :post_votes, :dependent => :destroy
+  has_many :comment_votes, :dependent => :destroy
   has_and_belongs_to_many :courses
+  before_destroy { courses.clear }
 end

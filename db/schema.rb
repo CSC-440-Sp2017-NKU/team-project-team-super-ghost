@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410024431) do
+ActiveRecord::Schema.define(version: 20170410223500) do
+
+  create_table "comment_votes", force: :cascade do |t|
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.boolean  "is_upvote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comment_votes", ["comment_id"], name: "index_comment_votes_on_comment_id"
+  add_index "comment_votes", ["user_id"], name: "index_comment_votes_on_user_id"
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -34,6 +45,17 @@ ActiveRecord::Schema.define(version: 20170410024431) do
     t.integer "user_id",   null: false
     t.integer "course_id", null: false
   end
+
+  create_table "post_votes", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.boolean  "is_upvote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "post_votes", ["post_id"], name: "index_post_votes_on_post_id"
+  add_index "post_votes", ["user_id"], name: "index_post_votes_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
