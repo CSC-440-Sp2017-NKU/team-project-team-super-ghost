@@ -15,11 +15,15 @@ Rails.application.routes.draw do
   # Posts and Comments
   resources :courses do
     resources :posts do
-      get '/upvote' => 'posts#upvote', as: 'course_post_upvote'
-      get '/downvote' => 'posts#downvote', as: 'course_post_downvote'
+      member do
+        get :upvote
+        get :downvote
+      end
       resources :comments do
-        get '/upvote' => 'comments#upvote', as: 'course_post_comment_upvote'
-        get '/downvote' => 'comments#downvote', as: 'course_post_comment_downvote'
+        member do
+          get :upvote
+          get :downvote
+        end
       end
     end
   end

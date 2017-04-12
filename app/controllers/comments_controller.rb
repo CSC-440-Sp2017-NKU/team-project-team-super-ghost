@@ -56,13 +56,16 @@ class CommentsController < ApplicationController
 
   # UPVOTE /comments/1/upvote
   def upvote
-    # TODO
-    upvote = @comment.vote.new(@comment.id, current_user.id, '1')
+    vote = CommentVote.where(comment_id: @comment.id, user_id: current_user.id).first_or_create
+    vote.update(is_upvote: true)
+    redirect_to course_post_path(@comment.post.course, @comment.post)
   end
 
   # DOWNVOTE /comments/1/downvote
   def downvote
-    # TODO
+    vote = CommentVote.where(comment_id: @comment.id, user_id: current_user.id).first_or_create
+    vote.update(is_upvote: false)
+    redirect_to course_post_path(@comment.post.course, @comment.post)
   end
 
   private
