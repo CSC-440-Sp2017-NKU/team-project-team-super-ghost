@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :authorize
 
-  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy, :upvote, :downvote]
 
   # GET /comments/new
   def new
@@ -57,6 +57,7 @@ class CommentsController < ApplicationController
   # UPVOTE /comments/1/upvote
   def upvote
     # TODO
+    upvote = @comment.vote.new(@comment.id, current_user.id, '1')
   end
 
   # DOWNVOTE /comments/1/downvote
