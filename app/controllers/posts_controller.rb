@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authorize
 
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /posts/1
   def show
@@ -62,12 +62,20 @@ class PostsController < ApplicationController
 
   # UPVOTE /posts/1/upvote
   def upvote
-    # TODO
+    if current_user.courses.exists?(@post.course)
+      vote = PostVote.where(post_id: @post.id, user_id: current_user.id).first_or_create
+      vote.update(is_upvote: true)
+    end
+    redirect_to course_post_path(@post.course, @post)
   end
 
   # DOWNVOTE /posts/1/downvote
   def downvote
-    # TODO
+    if current_user.courses.exists?(@post.course)
+      vote = PostVote.where(post_id: @post.id, user_id: current_user.id).first_or_create
+      vote.update(is_upvote: false)
+    end
+    redirect_to course_post_path(@post.course, @post)
   end
 
   private

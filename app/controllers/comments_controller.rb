@@ -56,15 +56,19 @@ class CommentsController < ApplicationController
 
   # UPVOTE /comments/1/upvote
   def upvote
-    vote = CommentVote.where(comment_id: @comment.id, user_id: current_user.id).first_or_create
-    vote.update(is_upvote: true)
+    if current_user.courses.exists?(@comment.post.course)
+      vote = CommentVote.where(comment_id: @comment.id, user_id: current_user.id).first_or_create
+      vote.update(is_upvote: true)
+    end
     redirect_to course_post_path(@comment.post.course, @comment.post)
   end
 
   # DOWNVOTE /comments/1/downvote
   def downvote
-    vote = CommentVote.where(comment_id: @comment.id, user_id: current_user.id).first_or_create
-    vote.update(is_upvote: false)
+    if current_user.courses.exists?(@comment.post.course)
+      vote = CommentVote.where(comment_id: @comment.id, user_id: current_user.id).first_or_create
+      vote.update(is_upvote: false)
+    end
     redirect_to course_post_path(@comment.post.course, @comment.post)
   end
 

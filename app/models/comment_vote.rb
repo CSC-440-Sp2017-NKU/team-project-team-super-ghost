@@ -7,5 +7,8 @@ class CommentVote < ActiveRecord::Base
   scope :upvote_count, -> { where(is_upvote: true).count }
   scope :downvote_count, -> { where(is_upvote: false).count }
   scope :score, -> { upvote_count - downvote_count }
-  scope :vote, -> { where(comment_id: comment.id).first }
+
+  def self.vote(comment_id)
+    where(comment_id: comment_id).first
+  end
 end

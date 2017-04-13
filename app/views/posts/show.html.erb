@@ -13,10 +13,30 @@
     <h4 class="media-heading"><%= @post.title %>
       <small><i>Posted by <u><%= @post.user.name %></u></i></small>
     </h4>
+    <div>
+      <p style="display: inline; font-size: 1.3em;"><%= @post.post_votes.score %></p>
+      <p style="display: inline; color: green;">+<%= @post.post_votes.upvote_count %></p>
+      <p style="display: inline; color: red;">-<%= @post.post_votes.downvote_count %></p>
+    </div>
+
     <p><%= @post.body %></p>
 
-    <p> <!-- Reply | Edit | Delete Buttons. -->
+    <p> <!-- Upvote | Downvote | Reply | Edit | Delete Buttons. -->
       <% if current_user.courses.exists?(@post.course) %>
+          <% vote = current_user.post_votes.vote(@post.id) %>
+          <% if vote == nil || vote.is_upvote == false %>
+              <%= link_to upvote_course_post_path(@post.course, @post), class: "glyph-link" do %>
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                  Upvote
+              <% end %>
+          <% end %>
+          <% if vote == nil || vote.is_upvote == true %>
+              <%= link_to downvote_course_post_path(@post.course, @post), class: "glyph-link" do %>
+                  <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                  Downvote
+              <% end %>
+          <% end %>
+
           <a href="#" data-toggle="modal" data-target="#myModal" class="glyph-link">
             <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
             Reply
@@ -56,18 +76,20 @@
 
             <p><%= comment.body %></p>
 
-            <p> <!-- Edit | Delete Buttons. -->
-              <% vote = current_user.comment_votes.where(comment_id: comment.id).first %>
-              <% if vote == nil || vote.is_upvote == false %>
-                  <%= link_to upvote_course_post_comment_path(@post.course, @post, comment), class: "glyph-link" do %>
-                      <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                      Upvote
+            <p> <!-- Upvote | Downvote | Edit | Delete Buttons. -->
+              <% if current_user.courses.exists?(@post.course) %>
+                  <% vote = current_user.comment_votes.vote(comment.id) %>
+                  <% if vote == nil || vote.is_upvote == false %>
+                      <%= link_to upvote_course_post_comment_path(@post.course, @post, comment), class: "glyph-link" do %>
+                          <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                          Upvote
+                      <% end %>
                   <% end %>
-              <% end %>
-              <% if vote == nil || vote.is_upvote == true %>
-                  <%= link_to downvote_course_post_comment_path(@post.course, @post, comment), class: "glyph-link" do %>
-                      <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-                      Downvote
+                  <% if vote == nil || vote.is_upvote == true %>
+                      <%= link_to downvote_course_post_comment_path(@post.course, @post, comment), class: "glyph-link" do %>
+                          <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                          Downvote
+                      <% end %>
                   <% end %>
               <% end %>
               <% if current_user.id == comment.user_id %>
