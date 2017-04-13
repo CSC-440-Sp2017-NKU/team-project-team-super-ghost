@@ -35,3 +35,50 @@
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Droid Serif', serif;
 }
+
+/* Note: Try to remove the following lines to see the effect of CSS positioning */
+.affix {
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.affix + .container-fluid {
+  padding-top: 0px;
+}
+
+a {
+    color: inherit;
+    background-color: inherit;
+}
+
+.nav .affix {
+    width: 100%;
+}
+
+/*.nav-wrapper {*/
+/*    min-height: 60px;*/
+/*}*/
+
+#header {
+	background-image: url("campus-bg.jpg");
+	background-size: cover;
+	background-position: 50% 50%;
+	height: 300px;
+	color: white;
+}
+
+#navbar {
+	border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	margin-bottom: 0;
+}
+
+#footer {
+	background-color: #FDC73C;
+	border-color: #FDC73C;
+	background-image: none;
+	color: white;
+	text-align: center;
+	margin: 0px;
+}
