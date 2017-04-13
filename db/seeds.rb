@@ -10,5 +10,13 @@ Course.create([
                   {title: 'CSC 440'},
                   {title: 'CSC 362'},
                   {title: 'CSC 364'},
-                  {title: 'INF 286'}]
-)
+                  {title: 'INF 286'}
+              ])
+
+User.create([
+                {name: 'Test User 1', email: 'test@email.com', password_digest: '$2a$10$ZzjUgLYojB2njCzirZqTT.i6ekk8De8qnfFxLHatdP3LNNBO22a9i'},
+                {name: 'Test User 2', email: 'test2@email.com', password_digest: '$2a$10$ZzjUgLYojB2njCzirZqTT.i6ekk8De8qnfFxLHatdP3LNNBO22a9i'}
+            ]) do |u|
+  course = Course.find(1)
+  u.courses << course
+end
