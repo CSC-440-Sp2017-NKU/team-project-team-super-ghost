@@ -75,10 +75,46 @@ a {
 }
 
 #footer {
-	background-color: #FDC73C;
-	border-color: #FDC73C;
-	background-image: none;
-	color: white;
+	/*background-color: #FDC73C;*/
+	/*border-color: #FDC73C; GOLD COLOR*/
 	text-align: center;
-	margin: 0px;
+	width: 100%;
+	
+	position: absolute;
+    clear:both;
+    padding-bottom: 10px;
+    /*padding-top:20px;*/
+}
+
+/*.breadcrumb li {*/
+/*	background-color: #FDC73C;*/
+/*}*/
+
+/*.breadcrumb li a:hover {*/
+/*	background-color: #FDC73C;*/
+/*}*/
+
+.breadcrumb {
+	background-color: rgba(253, 199, 60, 1);
+	border: 0px solid rgba(245, 245, 245, 1);
+	border-radius: 0px; 
+	display: block;
+}
+.breadcrumb li {
+	font-size: 14px;
+}
+.breadcrumb a {
+	color: rgba(66, 139, 202, 1);
+}
+.breadcrumb a:hover {
+	color: rgba(42, 100, 150, 1);
+}
+.breadcrumb>.active {
+	color: rgba(87, 82, 82, 1);
+}
+.breadcrumb>li+li:before {
+	color: rgba(204, 204, 204, 1); content: "\002F\00a0";
+}
+.breadcrumb-item:hover {
+	background-color: #F5F5F5;
 }

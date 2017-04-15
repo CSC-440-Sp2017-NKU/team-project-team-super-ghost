@@ -1,4 +1,11 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
+
+<% if flash[:notice] %>
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= notice %>
+  </div>
+<% end %>
 
 <!-- Portion of the code committed to the actual Post/Question display. -->
 <div class="media">
@@ -13,11 +20,6 @@
     <h4 class="media-heading"><%= @post.title %>
       <small><i>Posted by <u><%= @post.user.name %></u></i></small>
     </h4>
-    <div>
-      <p style="display: inline; font-size: 1.3em;"><%= @post.post_votes.score %></p>
-      <p style="display: inline; color: green;">+<%= @post.post_votes.upvote_count %></p>
-      <p style="display: inline; color: red;">-<%= @post.post_votes.downvote_count %></p>
-    </div>
 
     <p><%= @post.body %></p>
 
@@ -55,6 +57,25 @@
           <% end %>
       <% end %>
     </p>
+    
+    <!-- Like/Dislike Bar Display -->
+    <p>
+      <div class="progress">
+        
+          <!-- LIKES -->
+          <div class="progress-bar progress-bar-success" style="width: <%= get_upvote_percent(@post) %>%">
+            <span class="sr-only">35% Like</span>
+            <%= @post.post_votes.upvote_count %>
+          </div>
+        
+          <!-- DISLIKES -->
+          <div class="progress-bar progress-bar-danger" style="width: <%= get_downvote_percent(@post) %>%">
+            <span class="sr-only">35% Like</span>
+            <%= @post.post_votes.downvote_count %>
+          </div>
+          
+      </div>
+    </p>
 
 
     <!-- Comments Nested Section -->
@@ -68,11 +89,6 @@
           <div class="media-body">
 
             <h4 class="media-heading"><%= comment.user.name %></h4>
-            <div>
-              <p style="display: inline; font-size: 1.3em;"><%= comment.comment_votes.score %></p>
-              <p style="display: inline; color: green;">+<%= comment.comment_votes.upvote_count %></p>
-              <p style="display: inline; color: red;">-<%= comment.comment_votes.downvote_count %></p>
-            </div>
 
             <p><%= comment.body %></p>
 
@@ -103,6 +119,25 @@
                       Delete
                   <% end %>
               <% end %>
+            </p>
+            
+            <!-- Like/Dislike Bar Display -->
+            <p>
+              <div class="progress">
+                
+                  <!-- LIKES -->
+                  <div class="progress-bar progress-bar-success" style="width: <%= get_comment_upvote_percent(comment) %>%">
+                    <span class="sr-only">35% Like</span>
+                    <%= comment.comment_votes.upvote_count %>
+                  </div>
+                
+                  <!-- DISLIKES -->
+                  <div class="progress-bar progress-bar-danger" style="width: <%= get_comment_downvote_percent(comment) %>%">
+                    <span class="sr-only">35% Like</span>
+                    <%= comment.comment_votes.downvote_count %>
+                  </div>
+                  
+              </div>
             </p>
 
           </div>
