@@ -25,12 +25,12 @@ The following repository will be used for a project implementing NKU-Net, an NKU
 
 
 ## Database Commands Used:
-# Iteration 1
+##### Iteration 1
 `bin/rails g scaffold Post title:string body:text author:string course:references`
 
 `bin/rails g model Comment author:string body:text post:references`
 
-# Iteration 2
+##### Iteration 2
 `bin/rails g scaffold Course title:string`
 
 `bin/rails g model User name:string email:string password_digest:string`
