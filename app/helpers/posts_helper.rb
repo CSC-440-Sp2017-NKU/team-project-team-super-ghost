@@ -5,8 +5,8 @@ module PostsHelper
   
   def get_upvote_percent(post)
     # Get the number of likes and dislikes for a post.
-    likes = @post.post_votes.upvote_count
-    dislikes = @post.post_votes.downvote_count
+    likes = post.post_votes.upvote_count
+    dislikes = post.post_votes.downvote_count
     
     # Convert values to floats and then get the total count of both variables.
     likes = likes.to_f
@@ -19,8 +19,8 @@ module PostsHelper
   
   def get_downvote_percent(post)
     # Get the number of likes and dislikes for a post.
-    likes = @post.post_votes.upvote_count
-    dislikes = @post.post_votes.downvote_count
+    likes = post.post_votes.upvote_count
+    dislikes = post.post_votes.downvote_count
     
     # Convert values to floats and then get the total count of both variables.
     likes = likes.to_f

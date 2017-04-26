@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   get '/signup' => 'users#new', as: 'new_users'
   post '/signup' => 'users#create', as: 'post_users'
+  get '/users/:id' => 'users#show', as: 'show_user' # TODO: Not sure if this will work.
 
   # Sessions
   get '/login' => 'sessions#new', as: 'new_sessions'

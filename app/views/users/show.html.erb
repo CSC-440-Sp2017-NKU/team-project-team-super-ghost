@@ -1,0 +1,159 @@
+
+<br>
+
+<div class="mainbody container-fluid">
+    <div class="row">
+        
+        
+        
+        <div class="col-lg-3 col-md-3"><!-- hidden-sm hidden-xs -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="media">
+                        <div align="center">
+                            <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
+                        </div>
+                        <div class="media-body">
+                            <h3><strong><%= @user.name %></strong></h3>
+                            <hr>
+                            <h3><strong>Bio</strong></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                            <hr>
+                            <h3><strong>Location</strong></h3>
+                            <p>Earth</p>
+                            <hr>
+                            <h3><strong>Gender</strong></h3>
+                            <p>Unknown</p>
+                            <hr>
+                            <h3><strong>Birthday</strong></h3>
+                            <p>January 01 1901</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <h2>Courses</h2>
+            <!-- Horizontally Scrollable panel here. -->
+            
+            <h2>Posts</h2>
+            <% @posts.each do |post| %>
+            
+                <!-- Simple post content example. -->
+                <div class="panel panel-default">
+                    
+                    <div class="panel-heading">
+                        <!--<div class="pull-left">-->
+                        <!--    <a href="#">-->
+                        <!--        <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">-->
+                        <!--    </a>-->
+                        <!--</div>-->
+                        <h3 class="panel-title">
+                            
+                            <strong><span class="label label-default"><%= Course.find(post.course_id).title %></span> <%= link_to post.title, course_post_path(post.course_id, post), style:"text-decoration:none;" %></strong>
+                        
+                            <% if current_user.id == post.user_id %>
+                                <div class="btn-group pull-right">
+                                    <div class="dropdown">
+                                        <button class="btn btn-link dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dd1" style="float: right;">
+                                            <li>
+                                                <%= link_to edit_course_post_path(post.course, post), class: "glyph-link" do %>
+                                                    <span class="glyphicon glyphicon-pencil"></span> <!-- Edit -->
+                                                    Edit
+                                                <% end %>
+                                            </li>
+                                            <li>
+                                                <%= link_to course_post_path(post.course, post), method: :delete, data: {confirm: 'Are you sure?'}, class: "glyph-link" do %>
+                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  <!-- Delete -->
+                                                    Delete
+                                                <% end %>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            <% end %>
+                        
+                        </h3>
+                    </div>
+                    
+                    
+                    <div class="panel-body">
+                        
+                        <div class="post-content">
+                            <p><%= post.body %></p>
+                        </div>
+                        
+                        <div>
+                            <div class="pull-right btn-group-xs">
+                                
+                                <p> <!-- Upvote | Downvote | Reply | Edit | Delete Buttons. -->
+                                  <% if current_user.courses.exists?(post.course) %>
+                                      <% vote = current_user.post_votes.vote(post.id) %>
+                                      <% if vote == nil || vote.is_upvote == false %>
+                                          <%= link_to upvote_course_post_path(post.course, post), class: "glyph-link" do %>
+                                              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                                              Upvote
+                                          <% end %>
+                                      <% end %>
+                                      <% if vote == nil || vote.is_upvote == true %>
+                                          <%= link_to downvote_course_post_path(post.course, post), class: "glyph-link" do %>
+                                              <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                                              Downvote
+                                          <% end %>
+                                      <% end %>
+                            
+                                      <a href="#" data-toggle="modal" data-target="#myModal" class="glyph-link">
+                                        <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                                        Reply
+                                      </a>
+                                  <% end %>
+                                </p>
+                                
+                            </div>
+                            <br>
+                            
+                            <!-- Like/Dislike Bar Display -->
+                            <p>
+                              <div class="progress">
+                                
+                                  <!-- LIKES -->
+                                  <div class="progress-bar progress-bar-success" style="width: <%= get_upvote_percent(post) %>%">
+                                    <span class="sr-only">35% Like</span>
+                                    <%= post.post_votes.upvote_count %>
+                                  </div>
+                                
+                                  <!-- DISLIKES -->
+                                  <div class="progress-bar progress-bar-danger" style="width: <%= get_downvote_percent(post) %>%">
+                                    <span class="sr-only">35% Like</span>
+                                    <%= post.post_votes.downvote_count %>
+                                  </div>
+                                  
+                              </div>
+                            </p>
+                            
+                        </div>
+                        <hr>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="#">
+                                    <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35px" height="35px" style="margin-left:3px; margin-right:-5px;">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <input class="form-control" rows="1" placeholder="Comment"></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <% end %>
+            
+        </div>
+    </div>
+</div>

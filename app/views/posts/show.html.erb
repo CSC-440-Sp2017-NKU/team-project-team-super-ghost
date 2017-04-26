@@ -16,7 +16,7 @@
 
     <!-- Post/Question Portion of code -->
     <h4 class="media-heading"><%= @post.title %>
-      <small><i>Posted by <u><%= @post.user.name %></u></i></small>
+      <small><i>Posted by <u><%= link_to @post.user.name, show_user_path(@post.user.id) %></u></i></small>
     </h4>
 
     <p><%= @post.body %></p>
@@ -86,7 +86,7 @@
 
           <div class="media-body">
 
-            <h4 class="media-heading"><%= comment.user.name %></h4>
+            <h4 class="media-heading"><%= link_to comment.user.name, show_user_path(comment.user.id) %></h4>
 
             <p><%= comment.body %></p>
 
