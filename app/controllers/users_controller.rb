@@ -17,9 +17,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.order("created_at DESC")
   end
+  
+  def is_admin?
+    @user = User.find(params[:id])
+    @user.role==1
+  end
+  
+  def is_registrar?
+    @user = User.find(params[:id])
+    @user.role==2
+  end
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :role)
   end
 end

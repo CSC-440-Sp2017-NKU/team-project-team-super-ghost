@@ -14,4 +14,34 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to new_sessions_path unless current_user
   end
+  
+  def signed_in?
+    !!current_user
+  end
+  
+  def redirect_if_registrar
+    if @current_user.role == 2
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    end
+  end
+  
+  def redirect_if_not_admin
+    if @current_user.role != 1
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    end
+  end
+  
+  def redirect_if_not_registrar
+    if @current_user.role != 2
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    end
+  end
+  
+  def redirect_if_not_r_or_a
+  
+    if @current_user.role !=2 && @current_user.role != 1
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false) 
+    end
+  end
+  
 end

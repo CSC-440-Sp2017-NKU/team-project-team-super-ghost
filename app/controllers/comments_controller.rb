@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :authorize
-
+  before_filter :redirect_if_registrar
   before_action :set_comment, only: [:edit, :update, :destroy, :upvote, :downvote]
 
   # GET /comments/new

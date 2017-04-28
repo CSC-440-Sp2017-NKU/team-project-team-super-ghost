@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authorize
-
+  before_filter :redirect_if_registrar
   before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   # GET /posts/1

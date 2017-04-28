@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new', as: 'new_sessions'
   post '/login' => 'sessions#create', as: 'sessions'
   get '/logout' => 'sessions#destroy', as: 'destroy_sessions'
+  
+  #Courses
+  get '/add_course' => 'courses#new', as: 'new_courses'
+  
+  #Public pages
+  
 
   # Posts and Comments
   resources :courses do

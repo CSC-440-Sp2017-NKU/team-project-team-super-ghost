@@ -1,24 +1,21 @@
-<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+<h1>Add Course</h1>
 
+<% if @course.errors.any? %>
+    <div class="alert alert-danger">
       <ul>
-      <% @course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @course.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+<% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, placeholder: "Enter title", class: "form-control" %>
-  </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %> 
-    <%= link_to @post do %>
-				<button type="button" class="btn btn-danger">Cancel</button>
-		<% end %>
-  </div>
+<%= form_for @course, :url => '/add_course' do |f| %>
+    <div class="field">
+      <%= label :course, 'title' %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
 <% end %>
