@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   #Courses
   get '/add_course' => 'courses#new', as: 'new_courses'
   
-  #Public pages
+  #Registrar Pages
+  get '/portal' => 'registrar_pages#home'
   
 
   # Posts and Comments
