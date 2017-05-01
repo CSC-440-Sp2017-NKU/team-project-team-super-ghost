@@ -40,3 +40,6 @@ The following repository will be used for a project implementing NKU-Net, an NKU
 `rails g model PostVotes post:references user:references is_upvote:boolean`
 
 `rails g model CommentVotes comment:references user:references is_upvote:boolean`
+
+##### Iteration 3
+`rails g model Uploads filename:text user:references`

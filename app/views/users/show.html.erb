@@ -36,6 +36,17 @@
         
         
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <h2>Documents</h2>
+            <%= form_for @user, :method => "post", :url => upload_user_path do |f| %>
+                <%= f.file_field :files %>
+                <%= f.submit "Upload", class: "btn btn-primary" %>
+            <% end %>
+            <div class="list-group">
+              <% @user.uploads.each do |upload| %>
+                  <a href="<%= '/uploads/' + upload.filename %>" class="list-group-item"><%= upload.filename %></a>
+              <% end %>
+            </div>
+
             <h2>Courses</h2>
             
             <div class="list-group">

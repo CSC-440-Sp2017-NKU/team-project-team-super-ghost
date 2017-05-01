@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :post_votes, :dependent => :destroy
   has_many :comment_votes, :dependent => :destroy
+  has_many :uploads, :dependent => :destroy
   has_and_belongs_to_many :courses
   before_destroy { courses.clear }
 end
