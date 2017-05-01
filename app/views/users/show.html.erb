@@ -37,7 +37,15 @@
         
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <h2>Courses</h2>
-            <!-- Horizontally Scrollable panel here. -->
+            
+            <div class="list-group">
+                <% @user.courses.each do |course| %>
+                    <a href="<%= course_path(course.id) %>" class="list-group-item">
+                        <span class="badge"><%= course.posts.length %></span>
+                        <%= course.title %>
+                    </a>
+                <% end %>
+            </div>
             
             <h2>Posts</h2>
             <% @posts.each do |post| %>
@@ -46,12 +54,7 @@
                 <div class="panel panel-default">
                     
                     <div class="panel-heading">
-                        <!--<div class="pull-left">-->
-                        <!--    <a href="#">-->
-                        <!--        <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">-->
-                        <!--    </a>-->
-                        <!--</div>-->
-                        <h3 class="panel-title">
+                        <h3 class="panel-title"> <!-- Course Title -->
                             
                             <strong><span class="label label-default"><%= Course.find(post.course_id).title %></span> <%= link_to post.title, course_post_path(post.course_id, post), style:"text-decoration:none;" %></strong>
                         
@@ -79,7 +82,7 @@
                                 </div>
                             <% end %>
                         
-                        </h3>
+                        </h3> <!-- /Course Title -->
                     </div>
                     
                     
@@ -140,14 +143,25 @@
                         </div>
                         <hr>
                         <div class="media">
+                            
                             <div class="pull-left">
                                 <a href="#">
                                     <img class="media-object img-circle" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="35px" height="35px" style="margin-left:3px; margin-right:-5px;">
                                 </a>
                             </div>
+                            
+                            
                             <div class="media-body">
-                                <input class="form-control" rows="1" placeholder="Comment"></input>
+                                <%= form_for [post.course, post, post.comments.build] do |f| %>
+                                    <div class="input-group">
+                                        <%= f.text_field :body, placeholder: "Enter Comment Here", class: "form-control" %>
+                                        <span class="input-group-btn">
+                                            <%= f.submit class: "btn btn-primary" %>
+                                        </span>
+                                    </div>
+                                <% end %>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
