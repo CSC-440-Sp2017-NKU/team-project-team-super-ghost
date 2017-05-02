@@ -5,7 +5,6 @@ class Breadcrumb
     @name = name
     @path = path
   end
-
   def name
     @name
   end

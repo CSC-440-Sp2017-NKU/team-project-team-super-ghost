@@ -16,6 +16,12 @@
                         <div class="media-body">
                             <h3><strong><%= @user.name %></strong></h3>
                             <hr>
+                            <% if rep_is_positive %>
+                                <h3 align="center" style="color:green;"><strong><%= calculate_reputation %></strong></h3>
+                            <% else %>
+                                <h3 align="center" style="color:red;"><strong><%= calculate_reputation %></strong></h3>
+                            <% end %>
+                            <hr>
                             <h3><strong>Bio</strong></h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
                             <hr>
@@ -179,6 +185,14 @@
             
             <% end %>
             
+            <div>
+                <h2>Recently Answered Questions</h2>
+                <hr>
+                <% @comments.each do |comment| %>
+                <strong><span class="label label-default"><%= Course.find(Post.find(comment.post_id).course_id).title %></span> <%= link_to Post.find(comment.post_id).title, course_post_path(Post.find(comment.post_id).course_id, Post.find(comment.post_id)), style:"text-decoration:none;" %></strong>
+                <br>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>
