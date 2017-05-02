@@ -5,7 +5,15 @@
   </div>
 <% end %>
 
-<h1 class="tab"><%= @course.title %></h1>
+<h2 class="tab">Title: <%= @course.title %></h2>
+<h2 class="tab">Professor: <%= @course.user.name %></h2>
+
+<% if @course.user.id == current_user.id %>
+    <%= link_to edit_course_path(@course), class: "glyph-link" do %>
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+        Edit
+    <% end %>
+<% end %>
 
 <div>
   <% @course.posts.each do |post| %>

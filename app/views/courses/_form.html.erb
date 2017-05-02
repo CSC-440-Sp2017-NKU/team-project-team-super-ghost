@@ -1,5 +1,3 @@
-<h1>Add Course</h1>
-
 <% if @course.errors.any? %>
     <div class="alert alert-danger">
       <ul>
@@ -10,7 +8,7 @@
     </div>
 <% end %>
 
-<%= form_for @course, :url => '/add_course' do |f| %>
+<%= form_for @course do |f| %>
     <div class="field">
       <%= label :course, 'title' %>
       <%= f.text_field :title, class: "form-control" %>

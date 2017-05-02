@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   ADMIN = 1
   REGISTRAR = 2
-  STUDENT_FALC = 0
+  TEACHER = 3
+  STUDENT = 0
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   rescue ActiveRecord::RecordNotFound
@@ -17,6 +18,10 @@ class ApplicationController < ActionController::Base
   
   def is_registrar?
      @current_user.role == REGISTRAR
+  end
+
+  def is_teacher?
+    @current_user.role == TEACHER
   end
   
   helper_method :is_admin?

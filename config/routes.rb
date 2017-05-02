@@ -14,9 +14,6 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create', as: 'sessions'
   get '/logout' => 'sessions#destroy', as: 'destroy_sessions'
   
-  #Courses
-  get '/add_course' => 'courses#new', as: 'new_courses'
-  
   #Registrar Pages
   get '/portal' => 'registrar_pages#home'
   
