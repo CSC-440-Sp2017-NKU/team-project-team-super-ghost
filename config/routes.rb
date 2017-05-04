@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  
+  # TEMPORARY, used for making students from CSV document
+  resources :documents do
+      member do
+          get :make_students_from_csv
+      end
+  end
+  
+  resources :documents
+  # resources :documents
+  
   # Base url
   root 'user_courses#index'
 
@@ -35,6 +46,7 @@ Rails.application.routes.draw do
   end
 
   resources :user_courses
+  
 end
 
 # EXAMPLES

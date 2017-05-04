@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502030240) do
+ActiveRecord::Schema.define(version: 20170504132932) do
 
   create_table "comment_votes", force: :cascade do |t|
     t.integer  "comment_id"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 20170502030240) do
   create_table "courses_users", id: false, force: :cascade do |t|
     t.integer "user_id",   null: false
     t.integer "course_id", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string   "filename"
+    t.string   "content_type"
+    t.binary   "file_contents"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "post_votes", force: :cascade do |t|

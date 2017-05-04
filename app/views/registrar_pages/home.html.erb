@@ -1,4 +1,21 @@
+<% if flash[:notice] %>
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if flash[:error] %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
 <h1>Registrar Portal Is Under Construction</h1>
-<h3><%= link_to "Add Course", new_course_path %></h3>
-<h3><%= link_to "Add Student", new_user_path %></h3>
-<h3>Add Student To Course</h3>
+<div class="list-group">
+  <%= link_to "Add Course", new_course_path, class: "list-group-item" %>
+  <%= link_to "Add Student", new_user_path, class: "list-group-item" %>
+  <%= link_to "Add Students via. CSV", new_document_path, class: "list-group-item" %>
+  <a href="#" class="list-group-item">Add Student To Course</a>
+</div>

@@ -27,3 +27,13 @@
       <%= f.submit "Submit", class: "btn btn-primary" %>
     </div>
 <% end %>
+
+<!-- Created Upload_controlled... May need to be deleted. -->
+<%# form_for @user, :method => "post", :url => upload_user_path do |f| %>
+  <%#= file_field_tag :file %>
+  <%#= submit_tag( "Import" ) %>
+<%# end %>
+<%= form_for @user, :method => "post", :url => upload_user_path do |f| %>
+    <%= f.file_field :files %>
+    <%= f.submit "Upload", class: "btn btn-primary" %>
+<% end %>
