@@ -1,5 +1,5 @@
 class Document < ActiveRecord::Base
-    validates :file, :presence => true
+    # validates :file, :presence => true
     def initialize(params = {})
         file = params.delete(:file)
         super
