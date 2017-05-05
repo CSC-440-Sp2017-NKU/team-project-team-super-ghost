@@ -1,0 +1,15 @@
+<%= form_tag do %>
+<div class="form-group">
+  <!-- USER ID -->
+  <div>
+    <%= select_tag 'user_id', options_from_collection_for_select(User.all, "id", "name") %>
+  </div>
+
+  <!-- COURSE ID -->
+  <div>
+    <%= select_tag 'course_id', options_from_collection_for_select(Course.all, "id", "title") %>
+  </div>
+
+  <%= submit_tag ('Submit') %>
+</div>
+<% end %>

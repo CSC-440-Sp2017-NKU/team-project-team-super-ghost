@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   
   #Registrar Pages
   get '/portal' => 'registrar_pages#home'
-  
+  get '/add-student-to-course' => 'registrar_pages#add_student_to_course', as: 'add_student_to_course'
+  post '/add-student-to-course' => 'registrar_pages#post_add_student_to_course'
 
   # Posts and Comments
   resources :courses do
