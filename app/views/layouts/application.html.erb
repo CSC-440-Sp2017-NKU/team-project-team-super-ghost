@@ -21,6 +21,8 @@
 <body>
   <% if current_user && is_registrar? %>
     <%= render :partial => 'layouts/registrar', :formats => [:html] %>
+  <%elsif current_user && is_admin? %>
+    <%= render :partial => 'layouts/admin', :formats => [:html] %>
   <% else %>
     <%= render :partial => 'layouts/default', :formats => [:html] %>
   <% end %>  

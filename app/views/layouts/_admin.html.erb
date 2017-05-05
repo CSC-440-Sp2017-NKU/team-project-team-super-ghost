@@ -26,10 +26,12 @@
 
     		<div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li><p class="navbar-text">Hello, <%= current_user.name %></p></li>
+              <li><p class="navbar-text"><%= link_to current_user.name, show_user_path(current_user.id) %></p></li>
               <li><%= link_to 'Portal', portal_path %></li>
               <li><%= link_to 'Add Student', new_user_path %></li>
               <li><%= link_to 'Add Course', new_course_path %></li>
+              <li><%= link_to 'My Courses', user_courses_path %></li>
+              <li><%= link_to 'Preview Courses', courses_path %></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "Logout", '/logout' %></li>

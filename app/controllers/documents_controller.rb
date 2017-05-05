@@ -2,7 +2,7 @@ require 'csv'
 
 class DocumentsController < ApplicationController
   before_filter :authorize
-  before_filter :redirect_if_not_registrar
+  before_filter :redirect_if_student_or_teacher
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   # GET /documents

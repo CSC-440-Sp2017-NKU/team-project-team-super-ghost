@@ -1,6 +1,6 @@
 class RegistrarPagesController < ApplicationController
   before_filter :authorize
-  before_filter :redirect_if_not_registrar
+  before_filter :redirect_if_student_or_teacher
   def home
   end
 

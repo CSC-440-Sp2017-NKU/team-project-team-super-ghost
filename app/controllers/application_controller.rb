@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     redirect_to destroy_sessions_path
   end
   
+  def is_student?
+    @current_user.role == STUDENT
+  end
+  
   def is_admin?
     @current_user.role == ADMIN
   end
@@ -24,6 +28,10 @@ class ApplicationController < ActionController::Base
     @current_user.role == TEACHER
   end
   
+  helper_method :is_student?
+  
+  helper_method :is_teacher?
+  
   helper_method :is_admin?
   
   helper_method :is_registrar?
@@ -34,9 +42,14 @@ class ApplicationController < ActionController::Base
     redirect_to new_sessions_path unless current_user
   end
   
+  def redirect_if_student_or_teacher
+    if is_student? || is_teacher?
+      render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
+    end
+  end
+  
   def redirect_if_registrar
     if is_registrar?
-     # render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
      redirect_to "/portal"
     end
   end
