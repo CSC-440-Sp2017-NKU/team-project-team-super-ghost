@@ -43,3 +43,4 @@ The following repository will be used for a project implementing NKU-Net, an NKU
 
 ##### Iteration 3
 `rails g model Uploads filename:text user:references`
+`rails generate migration add_role_to_users role:integer
