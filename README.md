@@ -42,5 +42,5 @@ The following repository will be used for a project implementing NKU-Net, an NKU
 `rails g model CommentVotes comment:references user:references is_upvote:boolean`
 
 ##### Iteration 3
-`rails g model Uploads filename:text user:references`
+`rails g model Uploads filename:text user:references
 `rails generate migration add_role_to_users role:integer
